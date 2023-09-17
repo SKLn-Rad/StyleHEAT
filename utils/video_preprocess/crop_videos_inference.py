@@ -20,7 +20,7 @@ class Croper:
     def __init__(self):
         pass
 
-    def align_face(self, img, lm, output_size=256):
+    def align_face(self, img, lm, output_size=256, zoom_factor=1.10):
         """
         :param filepath: str
         :return: PIL Image
@@ -93,9 +93,16 @@ class Croper:
             img = Image.fromarray(np.uint8(np.clip(np.rint(img), 0, 255)), 'RGB')
             quad += pad[:2]
 
-        # img = img.transform((transform_size, transform_size), Image.QUAD, (quad + 0.5).flatten(), Image.BILINEAR)
-        # if output_size < transform_size:
-        #     img = img.resize((output_size, output_size), Image.ANTIALIAS)
+        # Apply the Zoom
+        c = eye_avg + eye_to_mouth * 0.1
+        quad = np.stack([c - x - y, c - x + y, c + x + y, c + x - y])
+        qsize = np.hypot(*x) * 2
+
+        if zoom_factor != 1.0:
+            quad = c + (quad - c) * zoom_factor
+
+        # Apply translation to push face downwards
+        quad[:, 1] += 0.075 * qsize
 
         # Transform.
         def align_func(img):

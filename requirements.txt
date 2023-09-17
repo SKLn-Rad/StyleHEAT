@@ -2,7 +2,7 @@ basicsr==1.3.4.7
 certifi==2020.12.5
 cffi
 dlib==19.22.1
-face-alignment==1.3.5
+face-alignment==1.4.1
 glob2
 imageio==2.9.0
 imageio-ffmpeg==0.4.5

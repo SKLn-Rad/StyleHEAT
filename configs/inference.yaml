@@ -2,5 +2,5 @@ data:
 
 model:
     mode: inference
-    enable_audio: False
+    enable_audio: True
     free_styler_path: checkpoints/StyleHEAT_visual.pt

@@ -3,7 +3,7 @@ import numpy as np
 import torch
 
 
-detector = face_alignment.FaceAlignment(face_alignment.LandmarksType._2D)
+detector = face_alignment.FaceAlignment(face_alignment.LandmarksType.TWO_D)
 
 mean_landmark = np.array([[264., 460.],
        [264., 540.],
