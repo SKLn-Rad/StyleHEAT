@@ -9,6 +9,7 @@ def ensure_dir_exists(directory):
 
 # Set the directory path
 dir_path = "batch_180923_resized"
+
 base_destination_path = "batch_180923_resized_solo"
 
 # Create the base images_solo directory if it doesn't exist
@@ -29,7 +30,7 @@ for current_dir, dirs, files in os.walk(dir_path):
 
             # Check if there are enough parts
             if len(parts) > 1:
-                name = parts[1].lower()
+                name = parts[0].lower()
                 
                 if name not in processed_names:
                     # Create the same folder structure in the destination

@@ -97,21 +97,8 @@ def audio_reenactment(generator, data, audio_path):
     temp_root = './docs/demo/output/temp/'
     os.makedirs(temp_root, exist_ok=True)
 
-    wav2lip_checkpoint = os.path.join(current_root_path, checkpoint_dir, 'wav2lip.pth')
-
     audio2pose_checkpoint = os.path.join(current_root_path, checkpoint_dir, 'auido2pose_00140-model.pth')
-    audio2pose_yaml_path = os.path.join(current_root_path, 'src', 'config', 'auido2pose.yaml')
-    
-    audio2exp_checkpoint = os.path.join(current_root_path, checkpoint_dir, 'auido2exp_00300-model.pth')
-    audio2exp_yaml_path = os.path.join(current_root_path, 'src', 'config', 'auido2exp.yaml')
-
-    free_view_checkpoint = os.path.join(current_root_path, checkpoint_dir, 'facevid2vid_00189-model.pth.tar')
-    mapping_checkpoint = os.path.join(current_root_path, checkpoint_dir, 'mapping_00229-model.pth.tar')
-    facerender_yaml_path = os.path.join(current_root_path, 'src', 'config', 'facerender.yaml')
-
-    audio_to_coeff = Audio2Coeff(audio2pose_checkpoint, audio2pose_yaml_path, 
-                                audio2exp_checkpoint, audio2exp_yaml_path, 
-                                wav2lip_checkpoint, device)
+    audio_to_coeff = Audio2Coeff(current_root_path, device)
 
     first_coeff_path = os.path.join(temp_root, 'first_coeff.npy')
     source_3dmm = data['source_semantics'][0, :-3].unsqueeze(0) # Reduce the crop params
@@ -135,7 +122,7 @@ def audio_reenactment(generator, data, audio_path):
     # first_coeff_path, crop_pic_path =  preprocess_model.generate(pic_path, first_frame_dir)
     '''
 
-    audio_batch = get_data(first_coeff_path, audio_path, device)
+    audio_batch = get_data(first_coeff_path, audio_path, device, None, still=True, use_blink=False)
     pose_style = random.randint(0, 45)
     coeff_path = audio_to_coeff.generate(audio_batch, temp_root, pose_style)
 

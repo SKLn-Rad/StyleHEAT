@@ -31,3 +31,5 @@ batch_180923_resized/030_30/3dmm/
 batch_180923_resized/040_30/3dmm/
 
 *.npy
+
+*.wav
