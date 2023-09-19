@@ -102,6 +102,6 @@ def resize_images(input_folder, output_folder):
             logging.error("Error processing file {}: {}".format(path, e))
 
 if __name__ == "__main__":
-    input_folder = "batch_180923"
-    output_folder = "batch_180923_resized"
+    input_folder = "robotimages"
+    output_folder = "robotimages_resized"
     resize_images(input_folder, output_folder)

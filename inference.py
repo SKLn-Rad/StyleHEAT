@@ -9,7 +9,6 @@ from configs.config import Config
 from configs.path import PRETRAINED_MODELS_PATH
 from models.styleheat.styleheat import StyleHEAT
 
-
 def reenactment(generator, data):
     """
     :param generator:
@@ -23,9 +22,12 @@ def reenactment(generator, data):
     }
     :return:
     """
+    print("running video inference")
     bs = args.batch_size
     source_image = data['source_align'].unsqueeze(0).cuda()
     inv_data = inference_util.hfgi_inversion(generator, source_image, args=args, batch_size=bs)
+    print("finished hfgi inversion")
+    
     source_image = source_image.repeat(bs, 1, 1, 1)
     
     num_batch = len(data['target_semantics']) // bs + 1

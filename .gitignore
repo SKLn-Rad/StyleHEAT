@@ -17,3 +17,17 @@ images/_010_30_Hero/
 images_resized/_010_30_Hero/3dmm/
 
 images_resized/_010_30_Hero/
+
+*.png
+
+*.jpeg
+
+batch_180923_resized/010_30/3dmm/
+
+batch_180923_resized/020_30/3dmm/
+
+batch_180923_resized/030_30/3dmm/
+
+batch_180923_resized/040_30/3dmm/
+
+*.npy
