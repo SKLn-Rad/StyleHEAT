@@ -85,7 +85,7 @@ def predict_output_name(image_path, video_path):
     video_name = os.path.splitext(os.path.basename(video_path))[0]
 
     # Combine them to produce the output name
-    return f"{image_name}_{video_name}.mp4"
+    return f"{video_name}_{image_name}.mp4"
 
 if __name__ == "__main__":
     image_folder = "batch_180923_resized_solo"
