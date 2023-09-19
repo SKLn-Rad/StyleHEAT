@@ -74,15 +74,7 @@ def resize_images(input_folder, output_folder):
         
         try:
             with Image.open(path) as image:
-                image = resize_and_crop(image, 1024)
-
-                # Zoom in 20% on the face
-                width, height = image.size
-                left = width * 0.1
-                top = height * 0.1
-                right = width * 0.9
-                bottom = height * 0.9
-                image = image.crop((left, top, right, bottom))
+                image = resize_and_crop(image, 768)
 
                 # Construct the output path but change the extension to .jpeg
                 relative_path = os.path.relpath(path, input_folder)
@@ -103,5 +95,5 @@ def resize_images(input_folder, output_folder):
 
 if __name__ == "__main__":
     input_folder = "batch_180923"
-    output_folder = "batch_180923_resized"
+    output_folder = "batch_180924_resized"
     resize_images(input_folder, output_folder)

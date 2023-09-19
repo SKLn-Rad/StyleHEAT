@@ -8,9 +8,9 @@ def ensure_dir_exists(directory):
         os.makedirs(directory)
 
 # Set the directory path
-dir_path = "batch_180923_resized"
+dir_path = "batch_180924_resized"
 
-base_destination_path = "batch_180923_resized_solo"
+base_destination_path = "batch_180924_resized_solo"
 
 # Create the base images_solo directory if it doesn't exist
 ensure_dir_exists(base_destination_path)
